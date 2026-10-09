@@ -1,40 +1,41 @@
-🎬 Reelhouse V2 — Movie Explorer
+ 🎬  Movie Explorer
 
 Reelhouse is a modern, responsive movie explorer built with **HTML, CSS, and JavaScript**. It uses the **TMDB API** to dynamically fetch movies and provides an interactive experience for discovering, filtering, sorting, and saving movies.
 
-✨ Features
- 🎥 Dynamic movie data powered by TMDB API
-🔎 Search movies by title
-🎭 Filter movies by genre
-↕️ Sort movies by rating and release year
- ❤️ Add/remove movies from Favorites
-💾 Favorites saved using `localStorage`
- 🏠 Home and Movies navigation
-🔥 Trending Now section
- 🌸 Genre navigation with smooth scrolling
- 🎬 Movie details page
-▶️ Watch trailer functionality
-👥 Movie cast information
-🖼️ Movie posters and detailed information
-📱 Responsive design for desktop and mobile
-🍔 Mobile navigation menu
-✨ GSAP modal animations
- 🧩 Reusable movie rendering functions
- 📭 Empty states for sections without content
+## ✨ Features
 
- 🛠️ Technologies Used
+* 🎥 Dynamic movie data powered by TMDB API
+* 🔎 Search movies by title
+* 🎭 Filter movies by genre
+* ↕️ Sort movies by rating and release year
+* ❤️ Add/remove movies from Favorites
+* 💾 Favorites saved using `localStorage`
+* 🏠 Home and Movies navigation
+* 🔥 Trending Now section
+* 🌸 Genre navigation with smooth scrolling
+* 🎬 Movie details page
+* ▶️ Watch trailer functionality
+* 👥 Movie cast information
+* 🖼️ Movie posters and detailed information
+* 📱 Responsive design for desktop and mobile
+* 🍔 Mobile navigation menu
+* ✨ GSAP modal animations
+* 🧩 Reusable movie rendering functions
+* 📭 Empty states for sections without content
 
-* HTML5
-* CSS3
-* JavaScript (ES6+)
-* TMDB API
-* LocalStorage
-* GSAP
+## 🛠️ Technologies Used
 
-📂 Project Structure
+* **HTML5**
+* **CSS3**
+* **JavaScript (ES6+)**
+* **TMDB API**
+* **LocalStorage**
+* **GSAP**
+
+## 📂 Project Structure
 
 
-Reelhouse/
+Movie-Explorer/
 │
 ├── index.html
 ├── movie-details.html
@@ -45,9 +46,9 @@ Reelhouse/
 │
 ├── js/
 │   ├── script.js
-│   └── movie-details.js
-Api.js
-render.js
+│   ├── movie-details.js
+│   ├── api.js
+│   └── render.js
 │
 ├── images/
 │   └── movie posters and assets
@@ -160,5 +161,6 @@ Frontend development project built as part of my journey toward becoming a stron
 ### 🎬 Reelhouse V2
 
 **Discover. Explore. Save your favorites.**
+
 
 
