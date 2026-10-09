@@ -34,7 +34,7 @@ Reelhouse is a modern, responsive movie explorer built with **HTML, CSS, and Jav
 
 ## 📂 Project Structure
 
-
+```text
 Movie-Explorer/
 │
 ├── index.html
@@ -54,6 +54,8 @@ Movie-Explorer/
 │   └── movie posters and assets
 │
 └── README.md
+```
+
 
 
 > Update the file names above if your actual project structure uses different names.
