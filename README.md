@@ -58,7 +58,6 @@ Movie-Explorer/
 
 
 
-> Update the file names above if your actual project structure uses different names.
 
 ## 🚀 How It Works
 
