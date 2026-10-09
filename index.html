@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Movie Explorer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="movie-page.css">
+</head>
+<body>
+
+<!-- ============ NAVBAR ============ -->
+<header class="navbar">
+  <div class="navbar__inner">
+    <a href="#" class="navbar__brand">
+      <span class="navbar__brand-mark" aria-hidden="true"></span>
+      <span class="navbar__brand-name">movie<em>explorer</em></span>
+    </a>
+
+    <nav class="navbar__links" id="navLinks">
+      <a href="#" class="navbar__link navbar__link--active" id="home">Home</a>
+      <a href="#popular" class="navbar__link">Movies</a>
+      <a href="#genres" class="navbar__link">Genres</a>
+      <a href="#favorites" class="navbar__link" id="favoritesLink">Favorites</a>
+    </nav>
+
+    <div class="navbar__actions">
+      <form class="navbar__search" role="search" id="searchForm">
+        <svg class="navbar__search-icon" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <circle cx="7" cy="7" r="5.5" stroke="currentColor" stroke-width="1.4"/>
+          <path d="M11.5 11.5L14.5 14.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+        </svg>
+        <input type="text" id="searchInput" class="navbar__search-input" placeholder="Search titles, genres..." autocomplete="off">
+      </form>
+
+      <button class="navbar__toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <!-- ============ HERO ============ -->
+
+<section class="hero" id="hero" data-hero-movie-id="knives-out">
+
+  <div class="hero__backdrop" aria-hidden="true"></div>
+
+  <div class="hero__inner">
+
+    <div class="hero__content">
+
+      <p class="hero__eyebrow">Featured tonight</p>
+
+      <h1 class="hero__title">Knives Out</h1>
+
+      <ul class="hero__meta" aria-label="Movie details">
+        <li class="hero__meta-item">2019</li>
+        <li class="hero__meta-item">Mystery / Comedy</li>
+
+        <li class="hero__meta-item hero__meta-item--rating">
+          <svg width="14" height="14" viewBox="0 0 16 16"
+            fill="currentColor" aria-hidden="true">
+            <path d="M8 .8l2.09 4.53 4.91.6-3.65 3.4.98 4.87L8 11.9l-4.33 2.3.98-4.87L1 6.93l4.91-.6L8 .8z"/>
+          </svg>
+          <span>7.9</span>
+        </li>
+      </ul>
+
+      <p class="hero__description">
+        A detective investigates the mysterious death of a wealthy crime novelist,
+        uncovering secrets and suspects within his eccentric family.
+      </p>
+
+      <div class="hero__actions">
+
+        <button class="btn btn--primary" id="heroPlayBtn" type="button">
+          <svg width="16" height="16" viewBox="0 0 16 16"
+            fill="currentColor" aria-hidden="true">
+            <path d="M4 2.5v11l9-5.5-9-5.5z"/>
+          </svg>
+          Watch now
+        </button>
+         <button 
+  class="btn btn--ghost btn--icon" 
+  id="heroFavoriteBtn" 
+  type="button"
+  aria-pressed="false"
+  aria-label="Add Knives Out to favorites"
+>
+  <svg
+    width="18"
+    height="18"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="1.6"
+    aria-hidden="true"
+  >
+    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"/>
+  </svg>
+</button>
+
+      </div>
+    </div>
+
+    <div class="hero__poster-wrap">
+
+      <div class="hero__film-holes" aria-hidden="true">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+      <img
+        class="hero__poster"
+        src="images/knives out.jpg"
+        alt="Poster for Knives Out"
+      >
+
+    </div>
+
+  </div>
+</section>
+
+
+
+  <!-- ============ GENRE FILTERS ============ -->
+  <section class="genre-section" id="genres" aria-label="Filter by genre">
+    <div class="genre-section__inner">
+      <div class="genre-list" id="genreFilters">
+        <button class="genre-chip genre-chip--active" type="button" data-genre="all">All</button>
+        <button class="genre-chip" type="button" data-genre="action">Action</button>
+        <button class="genre-chip" type="button" data-genre="animation">Animation</button>
+        <button class="genre-chip" type="button" data-genre="comedy">Comedy</button>
+        <button class="genre-chip" type="button" data-genre="drama">Drama</button>
+        <button class="genre-chip" type="button" data-genre="fantasy">Fantasy</button>
+      </div>
+    </div>
+    <select id="sortMovies">
+  <option value="default">Sort by</option>
+  <option value="ratingHigh">Rating: High to Low</option>
+  <option value="ratingLow">Rating: Low to High</option>
+  <option value="newest">Year: Newest</option>
+  <option value="oldest">Year: Oldest</option>
+</select>
+  </section>
+
+  <!-- ============ POPULAR MOVIES ============ -->
+  <section class="movies-section" id="popular">
+    <div class="movies-section__inner">
+      <div class="section-header">
+        <h2 class="section-header__title">Popular this week</h2>
+        <p class="section-header__subtitle">Handpicked, refreshed every Friday</p>
+      </div>
+
+      <div class="movie-grid" id="popularGrid" data-movie-grid>
+
+        <!-- Reusable movie card (sample / placeholder) -->
+        <article class="movie-card" data-movie-id="mv-01" data-genre="drama" data-favorite="false">
+          <div class="movie-card__poster-wrap">
+            <img class="movie-card__poster" src="images/blue-01.jfif" alt="Poster for Nightfall in Kestrel Bay">
+            <button class="movie-card__play" type="button" aria-label="Play Nightfall in Kestrel Bay">
+              <svg width="18" height="18" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M4 2.5v11l9-5.5-9-5.5z"/></svg>
+            </button>
+            <button class="movie-card__favorite" type="button" aria-pressed="false" aria-label="Add to favorites">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                <path d="M12 20.5s-7.5-4.6-10-9.3C.4 7.8 2 4.3 5.4 3.6c2-.4 4 .5 5.1 2.3a5.4 5.4 0 0 1 5.1-2.3c3.4.7 5 4.2 3.4 7.6-2.5 4.7-10 9.3-10 9.3z"/>
+              </svg>
+            </button>
+          </div>
+          <div class="movie-card__body">
+            <h3 class="movie-card__title">Nightfall in Kestrel Bay</h3>
+            <div class="movie-card__meta">
+              <span>2024</span>
+              <span class="movie-card__dot" aria-hidden="true"></span>
+              <span>Drama</span>
+              <span class="movie-card__rating">
+                <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 .8l2.09 4.53 4.91.6-3.65 3.4.98 4.87L8 11.9l-4.33 2.3.98-4.87L1 6.93l4.91-.6L8 .8z"/></svg>
+                8.4
+              </span>
+            </div>
+          </div>
+        </article>
+
+        <article class="movie-card" data-movie-id="mv-02" data-genre="action" data-favorite="false">
+          <div class="movie-card__poster-wrap">
+            <img class="movie-card__poster" src="images/blue-02.jfif" alt="Poster for Redline Protocol">
+            <button class="movie-card__play" type="button" aria-label="Play Redline Protocol">
+              <svg width="18" height="18" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M4 2.5v11l9-5.5-9-5.5z"/></svg>
+            </button>
+            <button class="movie-card__favorite" type="button" aria-pressed="false" aria-label="Add to favorites">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                <path d="M12 20.5s-7.5-4.6-10-9.3C.4 7.8 2 4.3 5.4 3.6c2-.4 4 .5 5.1 2.3a5.4 5.4 0 0 1 5.1-2.3c3.4.7 5 4.2 3.4 7.6-2.5 4.7-10 9.3-10 9.3z"/>
+              </svg>
+            </button>
+          </div>
+          <div class="movie-card__body">
+            <h3 class="movie-card__title">Redline Protocol</h3>
+            <div class="movie-card__meta">
+              <span>2023</span>
+              <span class="movie-card__dot" aria-hidden="true"></span>
+              <span>Action</span>
+              <span class="movie-card__rating">
+                <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 .8l2.09 4.53 4.91.6-3.65 3.4.98 4.87L8 11.9l-4.33 2.3.98-4.87L1 6.93l4.91-.6L8 .8z"/></svg>
+                7.6
+              </span>
+            </div>
+          </div>
+        </article>
+
+        <article class="movie-card" data-movie-id="mv-03" data-genre="fantasy" data-favorite="false">
+          <div class="movie-card__poster-wrap">
+            <img class="movie-card__poster" src="images/blue-03.jfif" alt="Poster for The Glass Orchard">
+            <button class="movie-card__play" type="button" aria-label="Play The Glass Orchard">
+              <svg width="18" height="18" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M4 2.5v11l9-5.5-9-5.5z"/></svg>
+            </button>
+            <button class="movie-card__favorite" type="button" aria-pressed="false" aria-label="Add to favorites">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                <path d="M12 20.5s-7.5-4.6-10-9.3C.4 7.8 2 4.3 5.4 3.6c2-.4 4 .5 5.1 2.3a5.4 5.4 0 0 1 5.1-2.3c3.4.7 5 4.2 3.4 7.6-2.5 4.7-10 9.3-10 9.3z"/>
+              </svg>
+            </button>
+          </div>
+          <div class="movie-card__body">
+            <h3 class="movie-card__title">The Glass Orchard</h3>
+            <div class="movie-card__meta">
+              <span>2022</span>
+              <span class="movie-card__dot" aria-hidden="true"></span>
+              <span>Fantasy</span>
+              <span class="movie-card__rating">
+                <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 .8l2.09 4.53 4.91.6-3.65 3.4.98 4.87L8 11.9l-4.33 2.3.98-4.87L1 6.93l4.91-.6L8 .8z"/></svg>
+                8.1
+              </span>
+            </div>
+          </div>
+        </article>
+
+        <article class="movie-card" data-movie-id="mv-04" data-genre="comedy" data-favorite="false">
+          <div class="movie-card__poster-wrap">
+            <img class="movie-card__poster" src="images/blue-04.jfif" alt="Poster for Small Talk">
+            <button class="movie-card__play" type="button" aria-label="Play Small Talk">
+              <svg width="18" height="18" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M4 2.5v11l9-5.5-9-5.5z"/></svg>
+            </button>
+            <button class="movie-card__favorite" type="button" aria-pressed="false" aria-label="Add to favorites">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                <path d="M12 20.5s-7.5-4.6-10-9.3C.4 7.8 2 4.3 5.4 3.6c2-.4 4 .5 5.1 2.3a5.4 5.4 0 0 1 5.1-2.3c3.4.7 5 4.2 3.4 7.6-2.5 4.7-10 9.3-10 9.3z"/>
+              </svg>
+            </button>
+          </div>
+          <div class="movie-card__body">
+            <h3 class="movie-card__title">Small Talk</h3>
+            <div class="movie-card__meta">
+              <span>2024</span>
+              <span class="movie-card__dot" aria-hidden="true"></span>
+              <span>Comedy</span>
+              <span class="movie-card__rating">
+                <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 .8l2.09 4.53 4.91.6-3.65 3.4.98 4.87L8 11.9l-4.33 2.3.98-4.87L1 6.93l4.91-.6L8 .8z"/></svg>
+                7.2
+              </span>
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+      <!-- Empty state: hidden by default, shown later via JS when filters/search return nothing -->
+      <div class="empty-state hidden" id="emptyState">
+        <div class="empty-state__icon" aria-hidden="true">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+            <circle cx="10.5" cy="10.5" r="6.5"/>
+            <path d="M15.5 15.5L20 20" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h3 class="empty-state__title">Nothing matched</h3>
+        <p class="empty-state__text">No movies found. Try another search or choose a different genre.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TRENDING / RECOMMENDED ============ -->
+  <section class="movies-section movies-section--alt" id="trending">
+    <div class="movies-section__inner">
+      <div class="section-header">
+        <h2 class="section-header__title">Trending now</h2>
+        <p class="section-header__subtitle">What everyone's watching</p>
+      </div>
+
+      <div class="movie-grid" id="trendingGrid" data-movie-grid>
+
+        <article class="movie-card" data-movie-id="mv-05" data-genre="animation" data-favorite="false">
+          <div class="movie-card__poster-wrap">
+            <img class="movie-card__poster" src="images/blue-05.jfif" alt="Poster for Paperwing">
+            <button class="movie-card__play" type="button" aria-label="Play Paperwing">
+              <svg width="18" height="18" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M4 2.5v11l9-5.5-9-5.5z"/></svg>
+            </button>
+            <button class="movie-card__favorite" type="button" aria-pressed="false" aria-label="Add to favorites">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                <path d="M12 20.5s-7.5-4.6-10-9.3C.4 7.8 2 4.3 5.4 3.6c2-.4 4 .5 5.1 2.3a5.4 5.4 0 0 1 5.1-2.3c3.4.7 5 4.2 3.4 7.6-2.5 4.7-10 9.3-10 9.3z"/>
+              </svg>
+            </button>
+          </div>
+          <div class="movie-card__body">
+            <h3 class="movie-card__title">Paperwing</h3>
+            <div class="movie-card__meta">
+              <span>2021</span>
+              <span class="movie-card__dot" aria-hidden="true"></span>
+              <span>Animation</span>
+              <span class="movie-card__rating">
+                <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 .8l2.09 4.53 4.91.6-3.65 3.4.98 4.87L8 11.9l-4.33 2.3.98-4.87L1 6.93l4.91-.6L8 .8z"/></svg>
+                8.9
+              </span>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <p>Reelhouse — a frontend practice project. Not a real streaming service.</p>
+  </div>
+</footer>
+
+<!-- ============ MOVIE DETAILS MODAL ============ -->
+<div class="modal-overlay hidden" id="modalOverlay">
+  <div class="modal" id="movieModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <button class="modal__close" type="button" id="modalClose" aria-label="Close movie details">
+      <svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 2l12 12M14 2L2 14" stroke-linecap="round"/></svg>
+    </button>
+
+    <div class="modal__content">
+      <div class="modal__poster-wrap">
+        <img class="modal__poster" id="modalPoster" src="images/hero-blueblack.jfif" alt="">
+      </div>
+
+      <div class="modal__details">
+        <p class="modal__eyebrow" id="modalGenre">Drama</p>
+        <h2 class="modal__title" id="modalTitle">Movie title</h2>
+
+        <ul class="modal__meta">
+          <li id="modalYear">2024</li>
+          <li class="modal__meta-rating" id="modalRating">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 .8l2.09 4.53 4.91.6-3.65 3.4.98 4.87L8 11.9l-4.33 2.3.98-4.87L1 6.93l4.91-.6L8 .8z"/></svg>
+              <span id="modal_Rating">8.4</span>
+          </li>
+        </ul>
+
+        <p class="modal__description" id="modalDescription">
+          Movie description will be populated here.
+        </p>
+    
+        <div class="modal__actions">
+          <button class="btn btn--primary" id="modalWatchBtn" type="button">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M4 2.5v11l9-5.5-9-5.5z"/></svg>
+            Watch now
+          </button>
+          <button class="btn btn--ghost btn--icon" id="modalFavoriteBtn" type="button" aria-pressed="false" aria-label="Add to favorites">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+              <path d="M12 20.5s-7.5-4.6-10-9.3C.4 7.8 2 4.3 5.4 3.6c2-.4 4 .5 5.1 2.3a5.4 5.4 0 0 1 5.1-2.3c3.4.7 5 4.2 3.4 7.6-2.5 4.7-10 9.3-10 9.3z"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section id="favorites" class="movies-section"  >
+  <div class="movies-section__inner">
+    <h2>My Favorites</h2>
+
+    
+    <div class="movie-grid" id="favoritesGrid">
+      <!-- favorite movies render honge -->
+    </div>
+    
+    <div class="empty-state" id="favoritesEmpty">
+      <!-- jab favorites empty hon -->
+    </div>
+  </div>
+</section>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
+<script src="api.js"></script>
+<script src="render.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>
