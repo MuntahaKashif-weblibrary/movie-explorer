@@ -154,11 +154,12 @@ Possible future improvements include:
 
 **MuNtAhA KaShiF**
 
-Frontend development project built as part of my journey toward becoming a stronger web developer.
+Frontend development project built with curiosity, creativity, and gratitude. Always learning, growing, and enjoying the journey of building for the web.
+
 
 ---
 
-### 🎬 Reelhouse V2
+### 🎬 Movie Explorer
 
 **Discover. Explore. Save your favorites.**
 
